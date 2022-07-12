@@ -1,0 +1,3 @@
+mettler-toledo-device==1.5.0
+pyserial==3.5
+serial-interface==2.1.3
