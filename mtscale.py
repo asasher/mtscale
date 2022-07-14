@@ -32,9 +32,9 @@ if __name__ == '__main__':
 
     create_file_with_headers_if_not_exists(args.out, ['Weight', 'Unit', 'Type', 'Date Time', 'Time Difference (s)'])
 
-    prev_time = datetime().now()
+    prev_time = datetime.now()
     while True:
-        current_time = datetime().now()
+        current_time = datetime.now()
         row = dev.get_weight()
         row.append(current_time.isoformat())
         row.append((current_time - prev_time).total_seconds())
