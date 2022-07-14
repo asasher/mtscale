@@ -11,12 +11,12 @@ def connect_to_device(port):
 def create_file_with_headers_if_not_exists(path_to_csv, headers):
     if not os.path.isfile(path_to_csv): 
         with open(path_to_csv, 'w') as f:
-            writer = csv.writer(f)
+            writer = csv.writer(f, delimiter=",", newline="")
             writer.writerow(headers)
 
 def append_to_csv(path_to_csv, data):
     with open(path_to_csv, 'a') as f:
-        writer = csv.writer(f)
+        writer = csv.writer(f, delimiter=",", newline="")
         writer.writerow(data)
 
 if __name__ == '__main__':
