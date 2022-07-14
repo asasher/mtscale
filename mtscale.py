@@ -33,8 +33,8 @@ if __name__ == '__main__':
     create_file_with_headers_if_not_exists(args.out, ['Weight', 'Unit', 'Type', 'Time'])
 
     while True:
-        row = dev.get_data()
+        row = dev.get_weight()
         row.append(datetime.now().strftime("%H:%M:%S"))
         print(row)
-        append_to_csv(args.out, dev.get_weight())
+        append_to_csv(args.out, row)
         sleep(args.refresh)
