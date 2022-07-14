@@ -36,7 +36,9 @@ if __name__ == '__main__':
     while True:
         current_time = datetime.now()
         row = dev.get_weight()
-        row.append(current_time.isoformat())
+        # current date and time
+        row.append(current_time.strftime('%Y-%m-%d %H:%M:%S'))
+        # time difference in seconds
         row.append((current_time - prev_time).total_seconds())
         prev_time = current_time
 
