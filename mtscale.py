@@ -30,17 +30,16 @@ if __name__ == '__main__':
 
     print(f'Connected to device: {dev.get_serial_number()}')
 
-    create_file_with_headers_if_not_exists(args.out, ['Weight', 'Unit', 'Type', 'Date Time', 'Time Difference (s)'])
+    create_file_with_headers_if_not_exists(args.out, ['Weight', 'Unit', 'Type', 'Date Time', 'Time Step (s)'])
 
-    prev_time = datetime.now()
+    start_time = datetime.now()
     while True:
         current_time = datetime.now()
         row = dev.get_weight()
         # current date and time
         row.append(current_time.strftime('%Y-%m-%d %H:%M:%S'))
         # time difference in seconds
-        row.append((current_time - prev_time).total_seconds())
-        prev_time = current_time
+        row.append((current_time - start_time).total_seconds())
 
         print(row)
         append_to_csv(args.out, row)
