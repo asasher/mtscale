@@ -23,6 +23,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Read data from Mettler Toledo device and write to csv file.')
     parser.add_argument('--port', type=str, help='Port the device is connected to.', default='COM5')
     parser.add_argument('--out', type=str, help='Path to output csv file.', default='data.csv')
+    parser.add_argument('--refresh', type=int, help='Refresh frequence in secomds', default=1)
     args = parser.parse_args()
 
     dev = connect_to_device(args.port)
@@ -30,8 +31,6 @@ if __name__ == '__main__':
     print(f'Connected to device: {dev.get_serial_number()}')
 
     create_file_with_headers_if_not_exists(args.out, ['Weight', 'Unit', 'Type', 'Time'])
-
-    refresh = int(input('Enter the refresh frequence in seconds:'))
 
     while True:
         row = dev.get_data()

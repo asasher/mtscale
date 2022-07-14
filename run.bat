@@ -1,4 +1,5 @@
 @ECHO OFF
-env\Scripts\activate
-python mtscale.py
+set /p refresh=Enter the refresh frequency in seconds:
+CALL %~dp0\env\Scripts\activate
+python %~dp0\mtscale.py %refresh%
 PAUSE
